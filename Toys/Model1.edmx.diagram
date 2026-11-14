@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7dece784ac804538876fecb649bcfc9e" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="ToysDBModel.City" Width="1.5" PointX="1.5" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysDBModel.Manufacturer" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysDBModel.Order" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysDBModel.OrderStatus" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysDBModel.PickupPoint" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysDBModel.ProductCategory" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysDBModel.Products" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysDBModel.ProductsInOrder" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysDBModel.Role" Width="1.5" PointX="1.5" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysDBModel.Street" Width="1.5" PointX="1.5" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysDBModel.Supplier" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToysDBModel.User" Width="1.5" PointX="0.75" PointY="21.25" IsExpanded="true" />
+        <AssociationConnector Association="ToysDBModel.FK_PickupPoint_City" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysDBModel.FK_Products_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysDBModel.FK_Order_OrderStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysDBModel.FK_Order_PickupPoint" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysDBModel.FK_Order_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysDBModel.FK_ProductsInOrder_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysDBModel.FK_PickupPoint_Street" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysDBModel.FK_Products_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysDBModel.FK_Products_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysDBModel.FK_ProductsInOrder_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="ToysDBModel.FK_User_Role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

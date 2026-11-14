@@ -24,5 +24,20 @@ namespace Toys
         {
             InitializeComponent();
         }
+
+        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            if (e.Content is Page page && !string.IsNullOrEmpty(page.Title))
+            {
+                this.Title = page.Title;
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (MessageBox.Show("Вы уверены, что хотите закрыть приложение?", "Выход из приложения", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No) {
+                e.Cancel = true;
+            }
+        }
     }
 }
