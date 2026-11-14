@@ -9,7 +9,37 @@
       Title="Авторизация">
 
     <Grid>
-   
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
 
+                <TextBlock Text="Логин"
+                           Grid.Row="0"
+                           Grid.Column="0"/>
+
+                <TextBox x:Name="tbLogin"
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         Height="35"/>
+                <TextBlock Text="Пароль"
+                           Grid.Row="1"
+                           Grid.Column="0"/>
+                <PasswordBox x:Name="pbPass"
+                             Grid.Row="1"
+                             Grid.Column="1"
+                             Height="35"/>
+            </Grid>
+            <WrapPanel>
+                
+            </WrapPanel>
+        </StackPanel>
     </Grid>
 </Page>
