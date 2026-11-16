@@ -24,5 +24,10 @@ namespace Toys.Pages
         {
             InitializeComponent();
         }
+
+        private void btnEnter_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MainPage());
+        }
     }
 }

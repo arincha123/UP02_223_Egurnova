@@ -9,6 +9,8 @@
       Title="Главная страница">
 
     <Grid>
-        <TextBlock>Главная страничка</TextBlock>
+        <TextBlock x:Name="tbkFIO"
+            Text=""/>
+
     </Grid>
 </Page>

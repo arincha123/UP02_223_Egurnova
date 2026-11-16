@@ -11,34 +11,46 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="45"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="150"/>
-                </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Логин"
-                           Grid.Row="0"
-                           Grid.Column="0"/>
+            <StackPanel>
+                <WrapPanel HorizontalAlignment="Center">
+                    <TextBlock Text="Логин"
+                        VerticalAlignment="Center"/>
 
-                <TextBox x:Name="tbLogin"
-                         Grid.Row="0"
-                         Grid.Column="1"
-                         Height="35"/>
-                <TextBlock Text="Пароль"
-                           Grid.Row="1"
-                           Grid.Column="0"/>
-                <PasswordBox x:Name="pbPass"
-                             Grid.Row="1"
-                             Grid.Column="1"
-                             Height="35"/>
-            </Grid>
+                    <TextBox x:Name="tbLogin"
+                        Height="25"
+                        Width="150"
+                        VerticalContentAlignment="Center"
+                        Margin="10"/>
+                </WrapPanel>
+
+                <WrapPanel HorizontalAlignment="Center">
+                    <TextBlock Text="Пароль"
+                        VerticalAlignment="Center"/>
+
+                    <PasswordBox x:Name="pbPass"
+                        Height="25"
+                        Width="150"
+                        VerticalContentAlignment="Center"
+                        Margin="10"/>
+                </WrapPanel>
+
+            </StackPanel>
+
+
+
+
             <WrapPanel>
-                
+                <Button x:Name="btnLogIn"
+                    Width="120"
+                    Height="25"
+                    Margin="10"
+                    Content="Войти"/>
+                <Button x:Name="btnEnter"
+                    Width="120"
+                    Height="25"
+                    Margin="10"
+                    Content="Перейти к товарам" Click="btnEnter_Click"/>
             </WrapPanel>
         </StackPanel>
     </Grid>
