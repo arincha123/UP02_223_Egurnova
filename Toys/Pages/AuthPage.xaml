@@ -17,7 +17,7 @@
                     <TextBlock Text="Логин"
                         VerticalAlignment="Center"/>
 
-                    <TextBox x:Name="tbLogin"
+                    <TextBox x:Name="Login"
                         Height="25"
                         Width="150"
                         VerticalContentAlignment="Center"
@@ -28,7 +28,7 @@
                     <TextBlock Text="Пароль"
                         VerticalAlignment="Center"/>
 
-                    <PasswordBox x:Name="pbPass"
+                    <PasswordBox x:Name="Pass"
                         Height="25"
                         Width="150"
                         VerticalContentAlignment="Center"
@@ -41,12 +41,12 @@
 
 
             <WrapPanel>
-                <Button x:Name="btnLogIn"
+                <Button x:Name="LogInBtn"
                     Width="120"
                     Height="25"
                     Margin="10"
                     Content="Войти"/>
-                <Button x:Name="btnEnter"
+                <Button x:Name="EnterBtn"
                     Width="120"
                     Height="25"
                     Margin="10"

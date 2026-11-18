@@ -20,9 +20,13 @@ namespace Toys.Pages
     /// </summary>
     public partial class MainPage : Page
     {
+        public List<Products> products;
         public MainPage()
         {
             InitializeComponent();
+
+            products= Core.context.Products.ToList();
+            ProdList.ItemsSource = products;
         }
     }
 }

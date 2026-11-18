@@ -9,8 +9,79 @@
       Title="Главная страница">
 
     <Grid>
-        <TextBlock x:Name="tbkFIO"
-            Text=""/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
+        <Button x:Name="ExitBtn"
+                Width="100"
+                Height="35"
+                Content="Выход"
+                HorizontalAlignment="Left"
+                Margin="0 0 10 0"/>
+        
+        <TextBlock x:Name="Fio"
+                   Grid.Row="0"
+                   HorizontalAlignment="Right"
+                   Width="auto">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="{} {0} {1} {2}}">
+                    <Binding Path="UserData.curUser.LastName"/>
+                    <Binding Path="UserData.curUser.FirstName"/>
+                    <Binding Path="UserData.curUser.MiddleName"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+
+        <ListBox x:Name="ProdList" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="{Binding PhotoPath}"
+                               x:Name="ProductImage"
+                               Grid.Column="0"
+                               Width="45"
+                               Height="45"/>
+                        
+                        <StackPanel Grid.Column="1">
+                            <WrapPanel>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{} {0} | {1}">
+                                            <Binding Path="ProductCategory.Name"/>
+                                            <Binding Path="Name"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </WrapPanel>   
+                                <TextBlock Text="{Binding Description, StringFormat='{}Описание товара: {0}'}"/>
+                                <TextBlock Text="{Binding Manufacturer.Name, StringFormat='{}Производитель: {0}'}"/>
+                                <TextBlock Text="{Binding Supplier.Name, StringFormat='{}Поставщик: {0}'}"/>
+                                <TextBlock Text="{Binding Price, StringFormat='{}Цена: {0}'}"/>
+                                <TextBlock Text="{Binding UnitOfMeasure, StringFormat='{}Единица измерения: {0}'}"/>
+                                <TextBlock Text="{Binding QuantityInStock, StringFormat='{}Количество на складе: {0}'}"/>
+                            
+                        </StackPanel>
+
+                        <TextBlock Text="{Binding Discount}" Grid.Column="2"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>    
+            
     </Grid>
 </Page>
