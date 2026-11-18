@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Toys.Pages"
+      xmlns:local="clr-namespace:Toys"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Главная страница">
@@ -11,67 +11,129 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="45"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+            
+        <TextBox x:Name="SearchBox"
+                Grid.Row="1"
+                Grid.Column="0"
+                MinHeight="30"
+                Margin="10 0 40 0"
+                Height="20"
+                VerticalContentAlignment="Center" TextChanged="SearchBox_TextChanged"/>
+
+        <StackPanel Grid.Column="1"
+                    Grid.Row="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                    Orientation="Horizontal">
+            
+            <ComboBox x:Name="FiltrBox"
+                      MinWidth="110"
+                      MaxWidth="150"
+                      Margin="0 0 10 0" SelectionChanged="FiltrBox_SelectionChanged"/>
+
+            <ComboBox x:Name="SortBox"
+                      MinWidth="110"
+                      MaxWidth="150" SelectionChanged="SortBox_SelectionChanged" />
+            
+        </StackPanel>
 
         <Button x:Name="ExitBtn"
                 Width="100"
                 Height="35"
                 Content="Выход"
                 HorizontalAlignment="Left"
-                Margin="0 0 10 0"/>
+                Margin="10 10 0 0" Click="ExitBtn_Click"/>
         
         <TextBlock x:Name="Fio"
                    Grid.Row="0"
                    HorizontalAlignment="Right"
-                   Width="auto">
+                   Width="auto"
+                   Margin="10"
+                   Grid.ColumnSpan="3">
             <TextBlock.Text>
-                <MultiBinding StringFormat="{} {0} {1} {2}}">
-                    <Binding Path="UserData.curUser.LastName"/>
-                    <Binding Path="UserData.curUser.FirstName"/>
-                    <Binding Path="UserData.curUser.MiddleName"/>
+                <MultiBinding StringFormat="{}{0} {1} {2}">
+                    <Binding Source="{x:Static local:UserData.curUser}" Path="LastName"/>
+                    <Binding Source="{x:Static local:UserData.curUser}" Path="FirstName"/>
+                    <Binding Source="{x:Static local:UserData.curUser}" Path="MiddleName"/>
                 </MultiBinding>
             </TextBlock.Text>
         </TextBlock>
 
-        <ListBox x:Name="ProdList" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}">
+        <ListBox x:Name="ProdList" 
+                 Grid.Row="2"
+                 Grid.ColumnSpan="3"
+                 d:ItemsSource="{d:SampleData ItemCount=5}" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 Margin="10"
+                 HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="auto" MinWidth="170"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto" MinWidth="120"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="{Binding PhotoPath}"
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Source="{Binding CoverPath}"
                                x:Name="ProductImage"
                                Grid.Column="0"
-                               Width="45"
-                               Height="45"/>
+                               Grid.RowSpan="7"
+                               Width="150"
+                               Height="150"
+                               Stretch="Uniform"
+                               Margin="0 5"/>
                         
-                        <StackPanel Grid.Column="1">
-                            <WrapPanel>
-                                <TextBlock>
-                                    <TextBlock.Text>
-                                        <MultiBinding StringFormat="{} {0} | {1}">
-                                            <Binding Path="ProductCategory.Name"/>
-                                            <Binding Path="Name"/>
-                                        </MultiBinding>
-                                    </TextBlock.Text>
-                                </TextBlock>
-                            </WrapPanel>   
-                                <TextBlock Text="{Binding Description, StringFormat='{}Описание товара: {0}'}"/>
-                                <TextBlock Text="{Binding Manufacturer.Name, StringFormat='{}Производитель: {0}'}"/>
-                                <TextBlock Text="{Binding Supplier.Name, StringFormat='{}Поставщик: {0}'}"/>
-                                <TextBlock Text="{Binding Price, StringFormat='{}Цена: {0}'}"/>
-                                <TextBlock Text="{Binding UnitOfMeasure, StringFormat='{}Единица измерения: {0}'}"/>
-                                <TextBlock Text="{Binding QuantityInStock, StringFormat='{}Количество на складе: {0}'}"/>
-                            
-                        </StackPanel>
+                        <TextBlock TextWrapping="Wrap"
+                                   Grid.Column="1"
+                                   Grid.Row="0">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{} {0} | {1}">
+                                    <Binding Path="ProductCategory.Name"/>
+                                    <Binding Path="Name"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                      
+                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Description, StringFormat='{}Описание товара: {0}'}" TextWrapping="Wrap"/>
+                        <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Manufacturer.Name, StringFormat='{}Производитель: {0}'}"/>
+                        <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Supplier.Name, StringFormat='{}Поставщик: {0}'}"/>
 
-                        <TextBlock Text="{Binding Discount}" Grid.Column="2"/>
+                        <WrapPanel Grid.Column="1" Grid.Row="4">
+                            <TextBlock Text="Цена: "/>
+                            <TextBlock Style="{StaticResource OldPrice}" Text="{Binding Price, StringFormat='{}{0:F2} руб.'}"/>
+                            <TextBlock Style="{StaticResource NewPrice}" Text="{Binding ReducePrice, StringFormat='{} {0:F2} руб.'}"/>
+                        </WrapPanel>
+                        
+                        
+                        <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding UnitOFMeasure, StringFormat='{}Единица измерения: {0}'}"/>
+                        <TextBlock Grid.Column="1" Grid.Row="6" Text="{Binding QuantityInStock, StringFormat='{}Количество на складе: {0}'}"/>
+                            
+
+                        <TextBlock Text="{Binding Discount}" 
+                                   Grid.Column="2"
+                                   Grid.RowSpan="7"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

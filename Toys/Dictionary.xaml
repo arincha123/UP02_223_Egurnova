@@ -2,5 +2,43 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style TargetType="TextBlock">
         <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
+
+    <Style TargetType="ListBoxItem">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding DiscountMore17}"  Value="True">
+                <Setter Property="Background" Value="#FFDEAD"/>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding ProdOutOfStock}" Value="True">
+                <Setter Property="Background" Value="#FF33A6D6"/>
+            </DataTrigger>
+
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="OldPrice" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding DiscountIsExist}" Value="True">
+                <Setter Property="TextDecorations" Value="Strikethrough"/>
+                <Setter Property="Foreground" Value="Red"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="NewPrice" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding DiscountIsExist}" Value="True">
+                <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+
 </ResourceDictionary>
