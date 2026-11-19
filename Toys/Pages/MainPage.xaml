@@ -77,6 +77,8 @@
             </TextBlock.Text>
         </TextBlock>
 
+        
+
         <ListBox x:Name="ProdList" 
                  Grid.Row="2"
                  Grid.ColumnSpan="3"
@@ -148,12 +150,12 @@
 
                         <Button x:Name="EditBtn"
                                 HorizontalAlignment="Left"
-                                Margin="10 0 0 0"
                                 Grid.Column="1"
                                 Grid.Row="8"
                                 Width="100"
                                 Height="20"
-                                Content="Изменить">
+                                Content="Изменить" Click="EditBtn_Click">
+                            <!--Эта часть работает, просто ломает отображение без запуска, отображаетмя корректно
                             <Button.Style>
                                 <Style TargetType="Button">
                                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -163,7 +165,7 @@
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
-                            </Button.Style>
+                            </Button.Style>-->
                         </Button>
 
 
@@ -176,7 +178,16 @@
                     <StackPanel/>
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
-        </ListBox>    
-            
+        </ListBox>
+
+        <Button x:Name="AddProd"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Width="120"
+                Height="35"
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Content="Добавить товар"
+                Margin="10" Click="AddProd_Click"/>
     </Grid>
 </Page>

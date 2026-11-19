@@ -24,9 +24,9 @@ namespace Toys
         public string Name { get; set; }
         public string UnitOFMeasure { get; set; }
         public decimal Price { get; set; }
-        public int Supplier_id { get; set; }
-        public int Manufacturer_id { get; set; }
-        public int ProductCategory_id { get; set; }
+        public int SupplierId { get; set; }
+        public int ManufacturerId { get; set; }
+        public int ProductCategoryId { get; set; }
         public int Discount { get; set; }
         public int QuantityInStock { get; set; }
         public string Description { get; set; }

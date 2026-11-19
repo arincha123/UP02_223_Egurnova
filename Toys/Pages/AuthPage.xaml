@@ -12,42 +12,56 @@
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center">
 
-            <StackPanel>
-                <WrapPanel HorizontalAlignment="Center">
-                    <TextBlock Text="Логин"
-                        VerticalAlignment="Center"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
 
-                    <TextBox x:Name="Login"
-                        Height="25"
-                        Width="150"
-                        VerticalContentAlignment="Center"
-                        Margin="10"/>
-                </WrapPanel>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Text="Логин"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Right"/>
 
-                <WrapPanel HorizontalAlignment="Center">
-                    <TextBlock Text="Пароль"
-                        VerticalAlignment="Center"/>
+                <TextBox x:Name="Login"
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         Height="25"
+                         Width="auto"
+                         VerticalContentAlignment="Center"
+                         Margin="10"/>
 
-                    <PasswordBox x:Name="Pass"
-                        Height="25"
-                        Width="150"
-                        VerticalContentAlignment="Center"
-                        Margin="10"/>
-                </WrapPanel>
+                <TextBlock Text="Пароль"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Right"/>
 
-            </StackPanel>
+                <PasswordBox x:Name="Pass"
+                             Grid.Row="1"
+                             Grid.Column="1"
+                             Height="25"
+                             Width="auto"
+                             VerticalContentAlignment="Center"
+                             Margin="10"/>
 
-
-
-
+            </Grid>
+           
             <WrapPanel>
                 <Button x:Name="LogInBtn"
                     Width="120"
                     Height="25"
                     Margin="10"
                     Content="Войти"/>
+                
                 <Button x:Name="EnterBtn"
-                    Width="120"
+                    Width="170"
                     Height="25"
                     Margin="10"
                     Content="Перейти к товарам" Click="btnEnter_Click"/>

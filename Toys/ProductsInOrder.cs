@@ -14,9 +14,9 @@ namespace Toys
     
     public partial class ProductsInOrder
     {
-        public int id { get; set; }
-        public int Order_id { get; set; }
-        public string Product_id { get; set; }
+        public int Id { get; set; }
+        public int OrderId { get; set; }
+        public string ProductId { get; set; }
         public int Quantity { get; set; }
     
         public virtual Order Order { get; set; }

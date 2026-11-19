@@ -20,13 +20,13 @@ namespace Toys
             this.ProductsInOrder = new HashSet<ProductsInOrder>();
         }
     
-        public int id { get; set; }
+        public int Id { get; set; }
         public System.DateTime OrderDate { get; set; }
         public System.DateTime DeliveryDate { get; set; }
-        public int PickupPoint_id { get; set; }
-        public int User_id { get; set; }
+        public int PickupPointId { get; set; }
+        public int UserId { get; set; }
         public int CodeToReceive { get; set; }
-        public int OrderStatus_id { get; set; }
+        public int OrderStatusId { get; set; }
     
         public virtual OrderStatus OrderStatus { get; set; }
         public virtual PickupPoint PickupPoint { get; set; }

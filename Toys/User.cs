@@ -20,8 +20,8 @@ namespace Toys
             this.Order = new HashSet<Order>();
         }
     
-        public int id { get; set; }
-        public int Role_id { get; set; }
+        public int Id { get; set; }
+        public int RoleId { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }

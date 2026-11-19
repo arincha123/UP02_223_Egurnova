@@ -20,7 +20,7 @@ namespace Toys
             this.User = new HashSet<User>();
         }
     
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Toys.Windows;
 
 namespace Toys.Pages
 {
@@ -53,7 +54,7 @@ namespace Toys.Pages
             FiltrBox.SelectedIndex = 0;
             SortBox.SelectedIndex = 0;
 
-            if (UserData.curUser != null && (UserData.curUser.Role_id == 1 || UserData.curUser.Role_id == 2))
+            if (UserData.curUser != null && (UserData.curUser.RoleId == 1 || UserData.curUser.RoleId == 2))
             {
                 SearchPanel.Visibility = Visibility.Visible;
             }
@@ -123,6 +124,27 @@ namespace Toys.Pages
 
 
             ProdList.ItemsSource = SearchedList;
+
+        }
+
+        private void AddProd_Click(object sender, RoutedEventArgs e)
+        {
+            var win = new EditForm(null);
+            if (win.ShowDialog() == true)
+            {
+                RefreshList();
+            }
+
+        }
+
+        private void RefreshList()
+        {
+            products = Core.context.Products.ToList();
+            ProdList.ItemsSource = products;
+        }
+
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

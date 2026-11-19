@@ -20,10 +20,10 @@ namespace Toys
             this.Order = new HashSet<Order>();
         }
     
-        public int id { get; set; }
+        public int Id { get; set; }
         public int Index { get; set; }
-        public int City_id { get; set; }
-        public int Street_id { get; set; }
+        public int CityId { get; set; }
+        public int StreetId { get; set; }
         public Nullable<int> Building { get; set; }
     
         public virtual City City { get; set; }
