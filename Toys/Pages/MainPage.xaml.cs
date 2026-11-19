@@ -27,7 +27,13 @@ namespace Toys.Pages
         public MainPage()
         {
             InitializeComponent();
+            PageLoad();
+            
 
+        }
+
+        private void PageLoad()
+        {
             products = Core.context.Products.ToList();
             ProdList.ItemsSource = products;
 
@@ -46,8 +52,13 @@ namespace Toys.Pages
 
             FiltrBox.SelectedIndex = 0;
             SortBox.SelectedIndex = 0;
-        }
 
+            if (UserData.curUser != null && (UserData.curUser.Role_id == 1 || UserData.curUser.Role_id == 2))
+            {
+                SearchPanel.Visibility = Visibility.Visible;
+            }
+
+        }
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AuthPage());
@@ -76,7 +87,12 @@ namespace Toys.Pages
 
             if (!string.IsNullOrEmpty(SearchedText))
             {
-                SearchedList = SearchedList.Where(l => l.Name.ToLower().Contains(SearchedText.ToLower())).ToList();
+                SearchedList = SearchedList.Where(l => l.Name.ToLower().Contains(SearchedText.ToLower()) 
+                                                    || l.ProductCategory.Name.ToLower().Contains(SearchedText.ToLower())
+                                                    || l.Description.ToLower().Contains(SearchedText.ToLower())
+                                                    || l.Manufacturer.Name.ToLower().Contains(SearchedText.ToLower())
+                                                    || l.Supplier.Name.ToLower().Contains(SearchedText.ToLower())
+                                                    ).ToList();
             }
 
             //if (SortBox.SelectedItem is ComboBoxItem comboBoxItem && comboBoxItem.Content.ToString() != "Без сортировки")
