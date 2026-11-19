@@ -21,6 +21,8 @@ namespace Toys.Windows
     {
         private Products CurProd;
         private bool IsNew;
+        private List<String> productCategories;
+        private List<String> productSuppliers;
         public EditForm(Products prod)
         {
             InitializeComponent();
@@ -36,20 +38,48 @@ namespace Toys.Windows
                 CurProd = prod;
             }
 
-            LoadData();
+            LoadFormData();
+            LoadProdData();
 
         }
 
+        private void LoadFormData()
+        {
+            productCategories = Core.context.ProductCategory.Select(x => x.Name).ToList();
+            ProdCat.ItemsSource = productCategories;
 
-        private void LoadData()
+
+            productSuppliers = Core.context.Supplier.Select(x => x.Name).ToList();
+            ProdSup.ItemsSource = productSuppliers;
+        }
+
+        private void LoadProdData()
         {
             if (IsNew)
             {
-
+                Path.Text = null;
+                ProdName.Text = null;
+                ProdCat = null;
+                ProdDesc.Text = null;
+                ProdManuf.Text = null;
+                ProdSup = null;
+                ProdPrice.Text = null;
+                ProdUnit.Text = null;
+                ProdQuant.Text = null;
+                ProdDis.Text = null;
             }
             else
             {
-
+                Path.Text = CurProd.CoverPath;
+                ProdName.Text = CurProd.Name;
+                ProdCat.SelectedItem = ProdCat.Items.Cast<ProductCategory>().FirstOrDefault(pc => pc.Id == CurProd.ProductCategoryId);
+                ProdDesc.Text = CurProd.Description;
+                ProdManuf.Text = CurProd.Manufacturer.ToString();
+                ProdSup.SelectedItem = ProdSup.Items.Cast<Supplier>().FirstOrDefault(pc => pc.Id == CurProd.SupplierId);
+                ProdPrice.Text = CurProd.Price.ToString();
+                ProdUnit.Text = CurProd.UnitOFMeasure.ToString();
+                ProdQuant.Text = CurProd.QuantityInStock.ToString();
+                ProdDis.Text = CurProd.Discount.ToString();
             }
         }
     }

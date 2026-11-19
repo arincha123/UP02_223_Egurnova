@@ -145,6 +145,19 @@ namespace Toys.Pages
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
+            Button bt = sender as Button;
+            //Доделать
+
+            Products editpr = ProdList.SelectedItem as Products;
+            if (editpr != null)
+            {
+                var win = new EditForm(editpr);
+                if (win.ShowDialog() == true)
+                {
+                    RefreshList();
+                }
+            }
+
 
         }
     }
