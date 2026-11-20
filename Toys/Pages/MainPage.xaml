@@ -155,12 +155,12 @@
                                 Width="100"
                                 Height="20"
                                 Content="Изменить" Click="EditBtn_Click">
-                            <!--Эта часть работает, просто ломает отображение без запуска, отображаетмя корректно
-                            <Button.Style>
+                            <!--Эта часть работает, просто ломает отображение без запуска, отображаетмя корректно-->
+                            <!--<Button.Style>
                                 <Style TargetType="Button">
                                     <Setter Property="Visibility" Value="Collapsed"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Source={x:Static local:UserData.curUser}, Path=Role_id}" Value="1">
+                                        <DataTrigger Binding="{Binding Source={x:Static local:UserData.curUser}, Path=RoleId}" Value="1">
                                             <Setter Property="Visibility" Value="Visible"/>
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -188,6 +188,8 @@
                 Grid.Row="2"
                 Grid.ColumnSpan="2"
                 Content="Добавить товар"
-                Margin="10" Click="AddProd_Click"/>
+                Margin="10" 
+                Visibility="Collapsed"
+                Click="AddProd_Click"/>
     </Grid>
 </Page>

@@ -5,10 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Toys.Windows"
         mc:Ignorable="d"
-        Title="EditForm" Height="450" Width="800">
+        Title="EditForm" Height="450" Width="800" Closing="Window_Closing">
     <Grid Margin="20">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
@@ -29,11 +28,11 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="{Binding CoverPath}"
+        <Image x:Name="Cover" Source="{Binding CurProd.CoverPath}"
                Grid.Column="0"
-               Grid.RowSpan="3"
-               Width="150"
-               Height="150"
+               Grid.RowSpan="7"
+               Width="160"
+               Height="300"
                Stretch="Uniform"
                Margin="5"/>
 
@@ -45,13 +44,24 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Stretch"/>
 
-        <TextBox x:Name="Path"
-                 Grid.Column="2"
-                 Grid.Row="0"
+        <!--Нужен Grid-->
+        
+        <WrapPanel Grid.Column="2"
+                   Grid.Row="0"
+                   VerticalAlignment="Center">
+            
+            <TextBox x:Name="Path"
+                 
                  Width="auto"
                  Height="20"
-                 VerticalContentAlignment="Center"
+                 
                  Margin="5 0"/>
+            <Button x:Name="AddPhotoBtn"/>
+
+
+        </WrapPanel>
+        
+        
 
         <TextBlock Text="Наименование товара: "
                    Grid.Column="1"
@@ -182,14 +192,14 @@
             Margin="5 0"/>
 
         <Button x:Name="SaveBtn"
-                Grid.Column="2"
+                Grid.ColumnSpan="3"
                 Grid.Row="11"
                 Width="120"
                 Height="30"
                 Content="Сохранить"
                 Margin="5 0"
-                HorizontalAlignment="Center"/>
-
+                HorizontalAlignment="Center" 
+                Click="SaveBtn_Click"/>
 
     </Grid>
 </Window>

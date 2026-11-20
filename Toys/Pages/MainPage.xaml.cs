@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -57,6 +58,11 @@ namespace Toys.Pages
             if (UserData.curUser != null && (UserData.curUser.RoleId == 1 || UserData.curUser.RoleId == 2))
             {
                 SearchPanel.Visibility = Visibility.Visible;
+            }
+
+            if (UserData.curUser != null && UserData.curUser.RoleId == 1)
+            {
+                AddProd.Visibility = Visibility.Visible;
             }
 
         }
@@ -145,10 +151,9 @@ namespace Toys.Pages
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-            Button bt = sender as Button;
-            //Доделать
+            Button btn = sender as Button;
+            Products editpr = btn.DataContext as Products;
 
-            Products editpr = ProdList.SelectedItem as Products;
             if (editpr != null)
             {
                 var win = new EditForm(editpr);
