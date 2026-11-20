@@ -54,13 +54,26 @@
 
         </Grid>
 
-        <Button x:Name="ExitBtn"
+        <WrapPanel Grid.Row="0"
+                   Grid.Column="0"
+                   VerticalAlignment="Center">
+            <Button x:Name="ExitBtn"
                 Width="100"
                 Height="35"
                 Content="Выход"
                 HorizontalAlignment="Left"
-                Margin="10 10 0 0" Click="ExitBtn_Click"/>
+                Margin="10 0 10 0" 
+                Click="ExitBtn_Click"/>
+
+        <Button x:Name="OrderBtn"
+                Width="120"
+                Height="35"
+                Content="Заказы"
+                VerticalAlignment="Center"
+                />
+        </WrapPanel>
         
+
         <TextBlock x:Name="Fio"
                    Grid.Row="0"
                    HorizontalAlignment="Right"

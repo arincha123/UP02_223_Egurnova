@@ -136,19 +136,22 @@ namespace Toys.Pages
         private void AddProd_Click(object sender, RoutedEventArgs e)
         {
             var win = new EditForm(null);
-            if (win.ShowDialog() == true)
-            {
-                RefreshList();
-            }
+            win.ShowDialog();
+            RefreshList();
 
         }
 
         private void RefreshList()
         {
-            products = Core.context.Products.ToList();
-            ProdList.ItemsSource = products;
+        //    products = Core.context.Products.ToList();
+        //    ProdList.ItemsSource = products;
+
+            ProdList.Items.Refresh();
         }
 
+        
+        
+        //Изменение по нажатию, в ТЗ почитай ещё раз
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
@@ -157,10 +160,9 @@ namespace Toys.Pages
             if (editpr != null)
             {
                 var win = new EditForm(editpr);
-                if (win.ShowDialog() == true)
-                {
-                    RefreshList();
-                }
+                win.ShowDialog();
+                RefreshList();
+                
             }
 
 

@@ -41,4 +41,9 @@
     </Style>
 
 
+    <Style TargetType="Button">
+        <Setter Property="Background" Value="#DEB887"/>
+    </Style>
+
+
 </ResourceDictionary>

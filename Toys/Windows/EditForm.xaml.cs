@@ -89,16 +89,16 @@ namespace Toys.Windows
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog()
-            {
-                Filter = "*.png;*.jpg"
-            };  //pitipiwpiw wiwwiw
-            if(dlg.ShowDialog() == true)
-            {
+            //Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog()
+            //{
+            //    Filter = "*.png;*.jpg"
+            //};  //pitipiwpiw wiwwiw
+            //if(dlg.ShowDialog() == true)
+            //{
 
 
-                MessageBox.Show("sdas");
-            }
+            //    MessageBox.Show("sdas");
+            //}
 
             try
             {
@@ -141,6 +141,11 @@ namespace Toys.Windows
             {
                 e.Cancel = true;
             }
+        }
+
+        private void DelBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
