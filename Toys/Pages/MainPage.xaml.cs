@@ -167,5 +167,10 @@ namespace Toys.Pages
 
 
         }
+
+        private void OrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new OrderPage());
+        }
     }
 }

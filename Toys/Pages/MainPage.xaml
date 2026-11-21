@@ -65,12 +65,27 @@
                 Margin="10 0 10 0" 
                 Click="ExitBtn_Click"/>
 
-        <Button x:Name="OrderBtn"
+            <Button x:Name="OrderBtn"
                 Width="120"
                 Height="35"
                 Content="Заказы"
-                VerticalAlignment="Center"
-                />
+                VerticalAlignment="Center" Click="OrderBtn_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Setter Property="Background" Value="#DEB887"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Source={x:Static local:UserData.curUser}, Path=RoleId}" Value="1">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding Source={x:Static local:UserData.curUser}, Path=RoleId}" Value="2">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </WrapPanel>
         
 

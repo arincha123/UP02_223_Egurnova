@@ -14,12 +14,7 @@ namespace Toys
     
     public partial class Order
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
-        {
-            this.ProductsInOrder = new HashSet<ProductsInOrder>();
-        }
-    
+        public string Article { get; set; }
         public int Id { get; set; }
         public System.DateTime OrderDate { get; set; }
         public System.DateTime DeliveryDate { get; set; }
@@ -31,7 +26,5 @@ namespace Toys
         public virtual OrderStatus OrderStatus { get; set; }
         public virtual PickupPoint PickupPoint { get; set; }
         public virtual User User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductsInOrder> ProductsInOrder { get; set; }
     }
 }

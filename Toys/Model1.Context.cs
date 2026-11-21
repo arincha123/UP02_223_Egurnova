@@ -25,16 +25,13 @@ namespace Toys
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<City> City { get; set; }
         public virtual DbSet<Manufacturer> Manufacturer { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderStatus> OrderStatus { get; set; }
         public virtual DbSet<PickupPoint> PickupPoint { get; set; }
         public virtual DbSet<ProductCategory> ProductCategory { get; set; }
         public virtual DbSet<Products> Products { get; set; }
-        public virtual DbSet<ProductsInOrder> ProductsInOrder { get; set; }
         public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<Street> Street { get; set; }
         public virtual DbSet<Supplier> Supplier { get; set; }
         public virtual DbSet<User> User { get; set; }
     }

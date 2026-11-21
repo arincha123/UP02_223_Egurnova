@@ -14,12 +14,7 @@ namespace Toys
     
     public partial class Products
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Products()
-        {
-            this.ProductsInOrder = new HashSet<ProductsInOrder>();
-        }
-    
+        public int Id { get; set; }
         public string Article { get; set; }
         public string Name { get; set; }
         public string UnitOFMeasure { get; set; }
@@ -35,7 +30,5 @@ namespace Toys
         public virtual Manufacturer Manufacturer { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }
         public virtual Supplier Supplier { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductsInOrder> ProductsInOrder { get; set; }
     }
 }
