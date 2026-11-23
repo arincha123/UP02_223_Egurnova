@@ -25,7 +25,11 @@
                 VerticalAlignment="Center" 
                 Click="BackBtn_Click"/>
 
-        <ListBox x:Name="OrdList" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalContentAlignment="Stretch">
+        <ListBox x:Name="OrdList" 
+                 Grid.Row="1"
+                 d:ItemsSource="{d:SampleData ItemCount=5}" 
+                 HorizontalContentAlignment="Stretch" 
+                 MouseDoubleClick="OrdList_MouseDoubleClick">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="10">

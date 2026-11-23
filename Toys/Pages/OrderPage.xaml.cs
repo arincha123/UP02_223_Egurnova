@@ -29,14 +29,24 @@ namespace Toys.Pages
 
         public void PageLoad()
         {
-            orders = Core.context.Order.ToList();
+            orders = Core.context.Order.Where(o => o.isFrozen ==  false).ToList();
             OrdList.ItemsSource = orders;
 
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.GoBack();
+        }
 
+        private void OrdList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ListBox listBox = sender as ListBox;
+            Order ord = listBox.SelectedItem as Order;
+            if (ord != null)
+            {
+
+            }
         }
     }
 }

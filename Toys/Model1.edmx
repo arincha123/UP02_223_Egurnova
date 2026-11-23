@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище ToysDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище ToysDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Manufacturer">
           <Key>
             <PropertyRef Name="Id" />
@@ -24,6 +24,7 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="CodeToReceive" Type="int" Nullable="false" />
           <Property Name="OrderStatusId" Type="int" Nullable="false" />
+          <Property Name="isFrozen" Type="bit" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
@@ -62,6 +63,7 @@
           <Property Name="QuantityInStock" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="PhotoPath" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="isFrozen" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -212,8 +214,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ToysDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -240,6 +241,7 @@
           <NavigationProperty Name="OrderStatus" Relationship="Self.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatus" />
           <NavigationProperty Name="PickupPoint" Relationship="Self.FK_Order_PickupPoint1" FromRole="Order" ToRole="PickupPoint" />
           <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
+          <Property Name="isFrozen" Type="Boolean" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
@@ -284,6 +286,7 @@
           <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Products_Manufacturer" FromRole="Products" ToRole="Manufacturer" />
           <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Products_ProductCategory" FromRole="Products" ToRole="ProductCategory" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK_Products_Supplier" FromRole="Products" ToRole="Supplier" />
+          <Property Name="isFrozen" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -455,6 +458,7 @@
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="ToysDBModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="isFrozen" ColumnName="isFrozen" />
                 <ScalarProperty Name="Article" ColumnName="Article" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
@@ -493,6 +497,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="ToysDBModel.Products">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="isFrozen" ColumnName="isFrozen" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Article" ColumnName="Article" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

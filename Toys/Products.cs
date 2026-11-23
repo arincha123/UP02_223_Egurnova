@@ -26,6 +26,7 @@ namespace Toys
         public int QuantityInStock { get; set; }
         public string Description { get; set; }
         public string PhotoPath { get; set; }
+        public bool isFrozen { get; set; }
     
         public virtual Manufacturer Manufacturer { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }

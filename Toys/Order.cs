@@ -22,6 +22,7 @@ namespace Toys
         public int UserId { get; set; }
         public int CodeToReceive { get; set; }
         public int OrderStatusId { get; set; }
+        public Nullable<bool> isFrozen { get; set; }
     
         public virtual OrderStatus OrderStatus { get; set; }
         public virtual PickupPoint PickupPoint { get; set; }

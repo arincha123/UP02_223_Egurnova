@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Toys.Windows"
         mc:Ignorable="d"
-        Title="EditForm" Height="450" Width="800" Closing="Window_Closing">
+        Title="EditForm" Height="500" Width="800" Closing="Window_Closing">
     <Grid Margin="20">
         <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
@@ -30,24 +31,33 @@
 
         <Image x:Name="Cover" Source="{Binding CurProd.CoverPath}"
                Grid.Column="0"
+               Grid.Row="1"
                Grid.RowSpan="7"
                Width="160"
                Height="300"
                Stretch="Uniform"
                Margin="5"/>
 
-        
-        
+        <Button x:Name="BackBtn"
+                Grid.Row="0"
+                Width="100"
+                Height="25"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Margin="10 0 0 0"
+                Content="Назад" Click="BackBtn_Click"/>
+
         <TextBlock Text="Фото товара: "
                    Grid.Column="1"
-                   Grid.Row="0"
+                   Grid.Row="1"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Stretch"/>
 
+        
         <!--Нужен Grid-->
 
         <Grid Grid.Column="2"
-                   Grid.Row="0"
+                   Grid.Row="1"
                    VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -72,13 +82,13 @@
 
         <TextBlock Text="Наименование товара: "
                    Grid.Column="1"
-                   Grid.Row="1"
+                   Grid.Row="2"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Stretch"/>
 
         <TextBox x:Name="ProdName"
                 Grid.Column="2"
-                Grid.Row="1"
+                Grid.Row="2"
                 Width="auto"
                 Height="20"
                 VerticalContentAlignment="Center"
@@ -86,13 +96,13 @@
 
         <TextBlock Text="Категория товара: "
                    Grid.Column="1"
-                   Grid.Row="2"
+                   Grid.Row="3"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Stretch"/>
 
         <ComboBox x:Name="ProdCat"
                 Grid.Column="2"
-                Grid.Row="2"
+                Grid.Row="3"
                 Width="auto"
                 Height="20"
                 VerticalContentAlignment="Center"
@@ -100,13 +110,13 @@
 
         <TextBlock Text="Описание товара: "
                    Grid.Column="1"
-                   Grid.Row="3"
+                   Grid.Row="4"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Stretch"/>
 
         <TextBox x:Name="ProdDesc"
                 Grid.Column="2"
-                Grid.Row="3"
+                Grid.Row="4"
                  Grid.RowSpan="2"
                 Width="auto"
                 Height="auto"
@@ -116,27 +126,34 @@
 
         <TextBlock Text="Производитель: "
                    Grid.Column="1"
-                   Grid.Row="5"
+                   Grid.Row="6"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Stretch"/>
 
-        <TextBox x:Name="ProdManuf"
+        <!--<TextBox x:Name="ProdManuf"
                 Grid.Column="2"
-                Grid.Row="5"
+                Grid.Row="6"
                 Width="auto"
                 Height="20"
                 VerticalContentAlignment="Center"
-                Margin="5 0"/>
+                Margin="5 0"/>-->
+        <ComboBox x:Name="ProdManuf"
+            Grid.Column="2"
+            Grid.Row="6"
+            Width="auto"
+            Height="20"
+            VerticalContentAlignment="Center"
+              Margin="5 0"/>
 
         <TextBlock Text="Поставщик: "
                    Grid.Column="1"
-                   Grid.Row="6"
+                   Grid.Row="7"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Stretch"/>
 
         <ComboBox x:Name="ProdSup"
                     Grid.Column="2"
-                    Grid.Row="6"
+                    Grid.Row="7"
                     Width="auto"
                     Height="20"
                     VerticalContentAlignment="Center"
@@ -144,25 +161,11 @@
 
         <TextBlock Text="Цена товара: "
            Grid.Column="1"
-           Grid.Row="7"
-           VerticalAlignment="Center"
-           HorizontalAlignment="Stretch"/>
-
-        <TextBox x:Name="ProdPrice"
-            Grid.Column="2"
-            Grid.Row="7"
-            Width="auto"
-            Height="20"
-            VerticalContentAlignment="Center"
-            Margin="5 0"/>
-
-        <TextBlock Text="Единица измерения товара: "
-           Grid.Column="1"
            Grid.Row="8"
            VerticalAlignment="Center"
            HorizontalAlignment="Stretch"/>
 
-        <TextBox x:Name="ProdUnit"
+        <TextBox x:Name="ProdPrice"
             Grid.Column="2"
             Grid.Row="8"
             Width="auto"
@@ -170,13 +173,13 @@
             VerticalContentAlignment="Center"
             Margin="5 0"/>
 
-        <TextBlock Text="Количество на складе: "
+        <TextBlock Text="Единица измерения товара: "
            Grid.Column="1"
            Grid.Row="9"
            VerticalAlignment="Center"
            HorizontalAlignment="Stretch"/>
 
-        <TextBox x:Name="ProdQuant"
+        <TextBox x:Name="ProdUnit"
             Grid.Column="2"
             Grid.Row="9"
             Width="auto"
@@ -184,13 +187,13 @@
             VerticalContentAlignment="Center"
             Margin="5 0"/>
 
-        <TextBlock Text="Скидка: "
+        <TextBlock Text="Количество на складе: "
            Grid.Column="1"
            Grid.Row="10"
            VerticalAlignment="Center"
            HorizontalAlignment="Stretch"/>
 
-        <TextBox x:Name="ProdDis"
+        <TextBox x:Name="ProdQuant"
             Grid.Column="2"
             Grid.Row="10"
             Width="auto"
@@ -198,9 +201,23 @@
             VerticalContentAlignment="Center"
             Margin="5 0"/>
 
+        <TextBlock Text="Скидка: "
+           Grid.Column="1"
+           Grid.Row="11"
+           VerticalAlignment="Center"
+           HorizontalAlignment="Stretch"/>
+
+        <TextBox x:Name="ProdDis"
+            Grid.Column="2"
+            Grid.Row="11"
+            Width="auto"
+            Height="20"
+            VerticalContentAlignment="Center"
+            Margin="5 0"/>
+
         <WrapPanel
             Grid.ColumnSpan="3"
-            Grid.Row="11"
+            Grid.Row="12"
             HorizontalAlignment="Center" >
             
             <Button x:Name="DelBtn"

@@ -13,5 +13,7 @@ namespace Toys
         public bool DiscountIsExist => Discount > 0;
         public decimal ReducePrice => DiscountIsExist? Price - ((Price*Discount)/100) : Price;
         public bool ProdOutOfStock => QuantityInStock == 0;
+
+
     }
 }

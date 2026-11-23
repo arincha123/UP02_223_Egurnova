@@ -24,6 +24,7 @@ namespace Toys.Windows
         private bool IsNew;
         private List<String> productCategories;
         private List<String> productSuppliers;
+        private List<String> productManufs;
         public EditForm(Products prod)
         {
             if (prod == null)
@@ -52,6 +53,8 @@ namespace Toys.Windows
             productCategories = Core.context.ProductCategory.Select(x => x.Name).ToList();
             ProdCat.ItemsSource = productCategories;
 
+            productManufs = Core.context.Manufacturer.Select(x => x.Name).ToList();
+            ProdManuf.ItemsSource = productManufs;
 
             productSuppliers = Core.context.Supplier.Select(x => x.Name).ToList();
             ProdSup.ItemsSource = productSuppliers;
@@ -65,7 +68,7 @@ namespace Toys.Windows
                 ProdName.Text = null;
                 ProdCat = null;
                 ProdDesc.Text = null;
-                ProdManuf.Text = null;
+                ProdManuf = null;
                 ProdSup = null;
                 ProdPrice.Text = null;
                 ProdUnit.Text = null;
@@ -78,7 +81,9 @@ namespace Toys.Windows
                 ProdName.Text = CurProd.Name;
                 ProdCat.SelectedItem = ProdCat.Items.Cast<String>().FirstOrDefault(pc => CurProd.ProductCategory.Name == pc);
                 ProdDesc.Text = CurProd.Description;
-                ProdManuf.Text = CurProd.Manufacturer.Name;
+                ProdManuf.SelectedItem = ProdManuf.Items.Cast<String>().FirstOrDefault(pm => pm == CurProd.Manufacturer.Name);
+
+
                 ProdSup.SelectedItem = ProdSup.Items.Cast<String>().FirstOrDefault(pc => pc == CurProd.Supplier.Name);
                 ProdPrice.Text = CurProd.Price.ToString();
                 ProdUnit.Text = CurProd.UnitOFMeasure.ToString();
@@ -106,19 +111,20 @@ namespace Toys.Windows
                 CurProd.Name = ProdName.Text;
                 CurProd.ProductCategoryId = Core.context.ProductCategory.FirstOrDefault(pc => pc.Name == ProdCat.SelectedItem.ToString()).Id;
                 CurProd.Description = ProdDesc.Text;
-                Manufacturer man = Core.context.Manufacturer.FirstOrDefault(m => m.Name == ProdManuf.Text);
-                if (man == null)
-                {
-                    Manufacturer manNew = new Manufacturer() { Name = ProdManuf.Text };
-                    Core.context.Manufacturer.Add(manNew);
-                    Core.context.SaveChanges();
-                    CurProd.ManufacturerId = manNew.Id;
-                }
-                else
-                {
-                    CurProd.ManufacturerId = man.Id;
-                }
-                
+                //Manufacturer man = Core.context.Manufacturer.FirstOrDefault(m => m.Name == ProdManuf.Text);
+                //if (man == null)
+                //{
+                //    Manufacturer manNew = new Manufacturer() { Name = ProdManuf.Text };
+                //    Core.context.Manufacturer.Add(manNew);
+                //    Core.context.SaveChanges();
+                //    CurProd.ManufacturerId = manNew.Id;
+                //}
+                //else
+                //{
+                //    CurProd.ManufacturerId = man.Id;
+                //}
+
+                CurProd.ManufacturerId = Core.context.Manufacturer.FirstOrDefault(pm => pm.Name == ProdManuf.SelectedItem.ToString()).Id;
                 CurProd.SupplierId = Core.context.Supplier.FirstOrDefault(pc => pc.Name == ProdSup.SelectedItem.ToString()).Id;
                 CurProd.Price = Decimal.Parse(ProdPrice.Text);
                 CurProd.UnitOFMeasure = ProdUnit.Text;
@@ -129,23 +135,34 @@ namespace Toys.Windows
             }
             catch ( Exception ex)
             {
-                MessageBox.Show("Слушай произошло какое-то недоразумение и программа вызвала ошибку, короче введи данные нормальные");
+                MessageBox.Show("Слушай, произошло какое-то недоразумение и программа вызвала ошибку, короче введи данные нормальные");
             }
 
             MessageBox.Show("Все изменения сохранены", "Сохранение", MessageBoxButton.OK, MessageBoxImage.Information);
+            Close();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (MessageBox.Show("Вы уверены, что хотите закрыть форму?\n Все несохранённые изменения исчезнут", "Закрытие формы", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
-            {
-                e.Cancel = true;
-            }
+            //if (MessageBox.Show("Вы уверены, что хотите закрыть форму?\n Все несохранённые изменения исчезнут", "Закрытие формы", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+            //{
+            //    e.Cancel = true;
+            //}
         }
 
         private void DelBtn_Click(object sender, RoutedEventArgs e)
         {
+            var res = MessageBox.Show("Вы уверены, что хотите удалить товар", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (res == MessageBoxResult.Yes)
+            {
+                CurProd.isFrozen = true;
+                    
+            }
+        }
 
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+          Close();  
         }
     }
 }

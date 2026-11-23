@@ -36,7 +36,7 @@ namespace Toys.Pages
 
         private void PageLoad()
         {
-            products = Core.context.Products.ToList();
+            products = Core.context.Products.Where(p => p.isFrozen == false).ToList();
             ProdList.ItemsSource = products;
 
             suppliers = Core.context.Supplier.Select(x => x.Name).ToList();
@@ -152,25 +152,33 @@ namespace Toys.Pages
         
         
         //Изменение по нажатию, в ТЗ почитай ещё раз
-        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        //private void EditBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Button btn = sender as Button;
+        //    Products editpr = btn.DataContext as Products;
+
+            
+
+
+        //}
+
+        private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            Button btn = sender as Button;
-            Products editpr = btn.DataContext as Products;
+            NavigationService.Navigate(new OrderPage());
+        }
+
+        private void ProdList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ListBox listBox = sender as ListBox;
+            Products editpr = listBox.SelectedItem as Products;
 
             if (editpr != null)
             {
                 var win = new EditForm(editpr);
                 win.ShowDialog();
                 RefreshList();
-                
+
             }
-
-
-        }
-
-        private void OrderBtn_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new OrderPage());
         }
     }
 }

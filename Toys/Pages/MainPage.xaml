@@ -113,7 +113,8 @@
                  d:ItemsSource="{d:SampleData ItemCount=5}" 
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  Margin="10"
-                 HorizontalContentAlignment="Stretch">
+                 HorizontalContentAlignment="Stretch" 
+                 MouseDoubleClick="ProdList_MouseDoubleClick">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -176,14 +177,16 @@
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
 
-                        <Button x:Name="EditBtn"
+                        <!--<Button x:Name="EditBtn"
                                 HorizontalAlignment="Left"
                                 Grid.Column="1"
                                 Grid.Row="8"
                                 Width="100"
                                 Height="20"
                                 Content="Изменить" Click="EditBtn_Click">
-                            <!--Эта часть работает, просто ломает отображение без запуска, отображаетмя корректно-->
+                            -->
+                        
+                        <!--Эта часть работает, просто ломает отображение без запуска, отображаетмя корректно-->
                             <!--<Button.Style>
                                 <Style TargetType="Button">
                                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -193,8 +196,8 @@
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
-                            </Button.Style>-->
-                        </Button>
+                            </Button.Style>--><!--
+                        </Button>-->
 
 
                     </Grid>
